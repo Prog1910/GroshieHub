@@ -1,21 +1,30 @@
 using Audit.Core;
 using Audit.Http;
+using GroshieHub.Domain.Entities;
+using GroshieHub.Domain.Entities.Validators;
 using Microsoft.OpenApi.Models;
 
 namespace GroshieHub.Presentation;
 
 public static class DependencyInjection
 {
-	public static IServiceCollection AddPresentation(this IServiceCollection services, IConfiguration configuration)
+	public static IServiceCollection AddPresentation(this IServiceCollection services)
 	{
 		services.ConfigureCors();
 		services.ConfigureSerilog();
 		services.ConfigureSwagger();
+		services.ConfigureApiSettings();
 
 		return services;
 	}
 
-	private static void ConfigureSerilog(this IServiceCollection services)
+	private static void ConfigureApiSettings(this IServiceCollection services)
+	{
+		services.AddOptionsWithValidateOnStart<CurrencyApiSettings, CurrencyApiSettingsValidator>()
+			.BindConfiguration(nameof(CurrencyApiSettings));
+	}
+
+	private static void ConfigureSerilog(this IServiceCollection _)
 	{
 		Configuration.Setup().UseSerilog(config =>
 			config.Message(auditEvent =>
