@@ -30,7 +30,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\GroshieHub.Domain\GroshieHub.Domain.csproj" />
+	  <ProjectReference Include="..\GroshieHub.API\GroshieHub.API.csproj" />
+	  <ProjectReference Include="..\GroshieHub.Application\GroshieHub.Application.csproj" />
 	</ItemGroup>
 
 </Project>

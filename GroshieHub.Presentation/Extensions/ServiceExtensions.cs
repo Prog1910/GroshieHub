@@ -1,4 +1,4 @@
-using Serilog;
+﻿using Serilog;
 using Serilog.Exceptions;
 using Serilog.Exceptions.Core;
 
@@ -9,10 +9,10 @@ public static class ServiceExtensions
 	public static void SetupSerilog(this WebApplicationBuilder builder)
 	{
 		builder.Host.UseSerilog((context, _, configuration)
-			=> configuration.ReadFrom.Configuration(context.Configuration).Enrich
-				.WithMachineName().Enrich
-				.FromLogContext().Enrich
-				.WithExceptionDetails(new DestructuringOptionsBuilder().WithDefaultDestructurers())
+			=> configuration.ReadFrom.Configuration(context.Configuration)
+				.Enrich.WithMachineName()
+				.Enrich.FromLogContext()
+				.Enrich.WithExceptionDetails(new DestructuringOptionsBuilder().WithDefaultDestructurers())
 		);
 	}
 
