@@ -1,4 +1,4 @@
-namespace GroshieHub.Shared.DTO;
+﻿namespace GroshieHub.Shared.DTO;
 
 public sealed record CurrencyApiSettingsDto
 {

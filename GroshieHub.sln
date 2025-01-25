@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Domain", "Groshi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Shared", "GroshieHub.Shared\GroshieHub.Shared.csproj", "{F4CD3D00-EA44-41E4-A9F5-53AA3DF963AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Application", "GroshieHub.Application\GroshieHub.Application.csproj", "{493FC23E-236C-413C-8909-47637C8FC17F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F4CD3D00-EA44-41E4-A9F5-53AA3DF963AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4CD3D00-EA44-41E4-A9F5-53AA3DF963AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4CD3D00-EA44-41E4-A9F5-53AA3DF963AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{493FC23E-236C-413C-8909-47637C8FC17F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{493FC23E-236C-413C-8909-47637C8FC17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{493FC23E-236C-413C-8909-47637C8FC17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{493FC23E-236C-413C-8909-47637C8FC17F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

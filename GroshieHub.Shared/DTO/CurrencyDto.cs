@@ -1,3 +1,3 @@
-namespace GroshieHub.Shared.DTO;
+﻿namespace GroshieHub.Shared.DTO;
 
 public record CurrencyDto(string Code, decimal Rate);
