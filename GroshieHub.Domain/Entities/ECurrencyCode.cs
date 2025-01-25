@@ -1,4 +1,4 @@
-namespace GroshieHub.Domain.Entities;
+﻿namespace GroshieHub.Domain.Entities;
 
 public enum ECurrencyCode
 {
