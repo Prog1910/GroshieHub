@@ -25,17 +25,17 @@ public sealed class CurrencyService : ServiceBase, ICurrencyService
 
 	protected override void SetupApiKey() => Client.DefaultRequestHeaders.Add("apikey", _settings.ApiKey);
 
-	public async Task<CurrencyDto> GetDefaultAsync(CancellationToken cancellationToken = default)
+	public async Task<CurrencyDto> GetDefaultAsync(CancellationToken token = default)
 	{
 		var code = _settings.DefaultCurrencyCode;
-		var rate = await GetExchangeRateAsync(code, cancellationToken: cancellationToken);
+		var rate = await GetExchangeRateAsync(code, token: token);
 
 		return (new { Code = code, Rate = FormatRate(rate) }).Adapt<CurrencyDto>();
 	}
 
-	public async Task<CurrencyDto> GetByCodeAsync(ECurrencyCode code, CancellationToken cancellationToken = default)
+	public async Task<CurrencyDto> GetByCodeAsync(ECurrencyCode code, CancellationToken token = default)
 	{
-		var rate = await GetExchangeRateAsync(code, cancellationToken: cancellationToken);
+		var rate = await GetExchangeRateAsync(code, token: token);
 
 		return (new { Code = code, Rate = FormatRate(rate) }).Adapt<CurrencyDto>();
 	}
@@ -43,24 +43,22 @@ public sealed class CurrencyService : ServiceBase, ICurrencyService
 	public async Task<CurrencyOnDateDto> GetByCodeOnDateAsync(
 		ECurrencyCode code,
 		DateTime date,
-		CancellationToken cancellationToken = default
+		CancellationToken token = default
 	)
 	{
-		var rate = await GetExchangeRateAsync(code, date, cancellationToken);
+		var rate = await GetExchangeRateAsync(code, date, token);
 
-		return (
-			new
-			{
-				Date = FormatDate(date),
-				Code = code,
-				Rate = FormatRate(rate),
-			}
-		).Adapt<CurrencyOnDateDto>();
+		return (new
+		{
+			Date = FormatDate(date),
+			Code = code,
+			Rate = FormatRate(rate),
+		}).Adapt<CurrencyOnDateDto>();
 	}
 
-	public async Task<CurrencyApiSettingsDto> GetSettingsAsync(CancellationToken cancellationToken = default)
+	public async Task<CurrencyApiSettingsDto> GetSettingsAsync(CancellationToken token = default)
 	{
-		var (total, used) = await GetRequestLimitInfoAsync(cancellationToken);
+		var (total, used) = await GetRequestLimitInfoAsync(token);
 
 		var settings = _settings.Adapt<CurrencyApiSettingsDto>();
 		settings.RequestLimit = total;
@@ -69,9 +67,9 @@ public sealed class CurrencyService : ServiceBase, ICurrencyService
 		return settings;
 	}
 
-	private async Task EnsureRequestLimitNotExceeded(CancellationToken cancellationToken = default)
+	private async Task EnsureRequestLimitNotExceeded(CancellationToken token = default)
 	{
-		var (total, used) = await GetRequestLimitInfoAsync(cancellationToken);
+		var (total, used) = await GetRequestLimitInfoAsync(token);
 
 		if (int.IsNegative(total - used))
 		{
@@ -82,31 +80,28 @@ public sealed class CurrencyService : ServiceBase, ICurrencyService
 	private async Task<decimal> GetExchangeRateAsync(
 		ECurrencyCode code,
 		DateTime? date = null,
-		CancellationToken cancellationToken = default
+		CancellationToken token = default
 	)
 	{
-		await EnsureRequestLimitNotExceeded(cancellationToken);
+		await EnsureRequestLimitNotExceeded(token);
 
-		var uri =
-			date == null
+		var uri = date == null
 				? $"{Client.BaseAddress}latest?currencies={code}&base_currency={_settings.BaseCurrencyCode}"
 				: $"{Client.BaseAddress}historical?currencies={code}&date={date}&base_currency={_settings.BaseCurrencyCode}";
 
-		var rootElement = await Client.GetFromJsonAsync<JsonElement>(uri, cancellationToken);
+		var rootElement = await Client.GetFromJsonAsync<JsonElement>(uri, token);
 
 		rootElement.GetProperty($"data.{code}.value", out decimal rate);
 
 		return rate;
 	}
 
-	private async Task<(short Total, short Used)> GetRequestLimitInfoAsync(
-		CancellationToken cancellationToken = default
-	)
+	private async Task<(short Total, short Used)> GetRequestLimitInfoAsync(CancellationToken token = default)
 	{
 		var uri = $"{Client.BaseAddress}status";
 
-		var rootElement = await Client.GetFromJsonAsync<JsonElement>(uri, cancellationToken);
-		var monthElement = JsonExtensions.GetProperty(rootElement, "quotas.month");
+		var rootElement = await Client.GetFromJsonAsync<JsonElement>(uri, token);
+		rootElement.GetProperty("quotas.month", out JsonElement monthElement);
 		monthElement.GetProperty("total", out short total);
 		monthElement.GetProperty("used", out short used);
 
