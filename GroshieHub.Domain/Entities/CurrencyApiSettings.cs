@@ -1,4 +1,4 @@
-using GroshieHub.Domain.Abstractions.Entities;
+﻿using GroshieHub.Domain.Abstractions.Entities;
 
 namespace GroshieHub.Domain.Entities;
 

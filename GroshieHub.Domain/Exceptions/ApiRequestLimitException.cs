@@ -1,4 +1,4 @@
-using GroshieHub.Domain.Exceptions.Abstractions;
+﻿using GroshieHub.Domain.Exceptions.Abstractions;
 
 namespace GroshieHub.Domain.Exceptions;
 
