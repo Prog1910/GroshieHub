@@ -1,9 +1,9 @@
-﻿using GroshieHub.Domain.Entities;
+﻿using GroshieHub.Shared.Enums;
 
 namespace GroshieHub.Domain.Extensions;
 
 public static class CurrencyCodeExtensions
 {
-	public static bool IsInvalid(this ECurrencyCode code)
-		=> code == ECurrencyCode.UNKNOWN || !Enum.IsDefined(code);
+	public static bool Exists(this string rawCode)
+		=> Enum.TryParse(rawCode.ToUpperInvariant(), out CurrencyCode code) && Enum.IsDefined(code);
 }
