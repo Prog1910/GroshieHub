@@ -1,8 +1,7 @@
-﻿namespace GroshieHub.Domain.Entities;
+﻿namespace GroshieHub.Shared.Enums;
 
-public enum ECurrencyCode
+public enum CurrencyCode
 {
-	UNKNOWN = -1,
 	AED,
 	AFN,
 	ALL,

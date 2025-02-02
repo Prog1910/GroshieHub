@@ -1,7 +1,7 @@
 ﻿using Audit.Core;
 using Audit.Http;
-using GroshieHub.Domain.Entities;
-using GroshieHub.Domain.Entities.Validators;
+using GroshieHub.Domain.Settings;
+using GroshieHub.Domain.Settings.Validators;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
@@ -22,7 +22,8 @@ public static class DependencyInjection
 
 	private static void ConfigureApiSettings(this IServiceCollection services)
 	{
-		services.AddOptionsWithValidateOnStart<CurrencyApiSettings, CurrencyApiSettingsValidator>().BindConfiguration(nameof(CurrencyApiSettings));
+		services.AddOptionsWithValidateOnStart<CurrencyApiSettings, CurrencyApiSettingsValidator>()
+					.BindConfiguration(nameof(CurrencyApiSettings));
 	}
 
 	private static void ConfigureSerilog(this IServiceCollection _)
@@ -49,7 +50,10 @@ public static class DependencyInjection
 
 	private static void ConfigureCors(this IServiceCollection services)
 	{
-		services.AddCors(options => options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithExposedHeaders("X-Pagination")));
+		services.AddCors(options
+			=> options.AddPolicy("CorsPolicy", static builder
+				=> builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader().WithExposedHeaders("X-Pagination")
+			));
 	}
 
 	private static void ConfigureSwagger(this IServiceCollection services)

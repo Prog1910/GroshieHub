@@ -1,30 +1,24 @@
-﻿using GroshieHub.Domain.Abstractions.Entities.Validators;
+﻿using GroshieHub.Domain.Common.Settings.Validators;
 using GroshieHub.Domain.Extensions;
 using Microsoft.Extensions.Options;
 
-namespace GroshieHub.Domain.Entities.Validators;
+namespace GroshieHub.Domain.Settings.Validators;
 
 public sealed class CurrencyApiSettingsValidator : ApiSettingsBaseValidator<CurrencyApiSettings>
 {
 	public override ValidateOptionsResult Validate(string? name, CurrencyApiSettings options)
 	{
-		if (base.Validate(name, options) is var baseValidationResult && baseValidationResult.Failed)
-		{
-			return baseValidationResult;
-		}
-
 		var validationResultBuilder = new ValidateOptionsResultBuilder();
-
 		validationResultBuilder.AddResult(base.Validate(name, options));
 
-		if (options.BaseCurrencyCode.IsInvalid())
+		if (!options.BaseCurrencyCode.Exists())
 		{
-			validationResultBuilder.AddError($"Base currency code is invalid.");
+			validationResultBuilder.AddError($"Base currency code '{options.BaseCurrencyCode}' is invalid.");
 		}
 
-		if (options.DefaultCurrencyCode.IsInvalid())
+		if (!options.DefaultCurrencyCode.Exists())
 		{
-			validationResultBuilder.AddError($"Default currency code is invalid.");
+			validationResultBuilder.AddError($"Default currency code '{options.DefaultCurrencyCode}' is invalid.");
 		}
 
 		if (int.IsNegative(options.CurrencyRoundCount))

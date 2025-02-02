@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 
-namespace GroshieHub.Domain.Abstractions.Entities.Validators;
+namespace GroshieHub.Domain.Common.Settings.Validators;
 
 public abstract class ApiSettingsBaseValidator<TSettings> : IValidateOptions<TSettings>
 	where TSettings : ApiSettingsBase
