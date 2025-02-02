@@ -1,6 +1,6 @@
-﻿using GroshieHub.Domain.Abstractions.Services;
-using GroshieHub.Domain.Entities;
+﻿using GroshieHub.Domain.Common.Services;
 using GroshieHub.Domain.Exceptions;
+using GroshieHub.Domain.Settings;
 using GroshieHub.Shared.DTO;
 using GroshieHub.Shared.Extensions;
 using Mapster;
@@ -33,18 +33,14 @@ public sealed class CurrencyService : ServiceBase, ICurrencyService
 		return (new { Code = code, Rate = FormatRate(rate) }).Adapt<CurrencyDto>();
 	}
 
-	public async Task<CurrencyDto> GetByCodeAsync(ECurrencyCode code, CancellationToken token = default)
+	public async Task<CurrencyDto> GetByCodeAsync(string code, CancellationToken token = default)
 	{
 		var rate = await GetExchangeRateAsync(code, token: token);
 
 		return (new { Code = code, Rate = FormatRate(rate) }).Adapt<CurrencyDto>();
 	}
 
-	public async Task<CurrencyOnDateDto> GetByCodeOnDateAsync(
-		ECurrencyCode code,
-		DateTime date,
-		CancellationToken token = default
-	)
+	public async Task<CurrencyOnDateDto> GetByCodeOnDateAsync(string code, DateTime date, CancellationToken token = default)
 	{
 		var rate = await GetExchangeRateAsync(code, date, token);
 
@@ -77,11 +73,7 @@ public sealed class CurrencyService : ServiceBase, ICurrencyService
 		}
 	}
 
-	private async Task<decimal> GetExchangeRateAsync(
-		ECurrencyCode code,
-		DateTime? date = null,
-		CancellationToken token = default
-	)
+	private async Task<decimal> GetExchangeRateAsync(string code, DateTime? date = null, CancellationToken token = default)
 	{
 		await EnsureRequestLimitNotExceeded(token);
 

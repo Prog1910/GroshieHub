@@ -1,7 +1,6 @@
 ﻿using GroshieHub.Application.Services;
-using GroshieHub.Domain.Entities;
-using GroshieHub.Domain.Exceptions;
 using GroshieHub.Shared.DTO;
+using GroshieHub.Shared.Enums;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GroshieHub.API.Controllers;
@@ -19,19 +18,17 @@ public sealed class CurrenciesController(ICurrencyService currencyService) : Con
 	}
 
 	[HttpGet("{code}")]
-	public async Task<ActionResult<CurrencyDto>> GetByCode(ECurrencyCode code = ECurrencyCode.UNKNOWN, CancellationToken token = default)
+	public async Task<ActionResult<CurrencyDto>> GetByCode(CurrencyCode code, CancellationToken token = default)
 	{
-		ValidateCode(code);
-		var currency = await currencyService.GetByCodeAsync(code, token);
+		var currency = await currencyService.GetByCodeAsync(code.ToString(), token);
 
 		return Ok(currency);
 	}
 
 	[HttpGet("{code}/{date:datetime}")]
-	public async Task<ActionResult<CurrencyOnDateDto>> GetByCodeOnDate(DateTime date, ECurrencyCode code = ECurrencyCode.UNKNOWN, CancellationToken token = default)
+	public async Task<ActionResult<CurrencyOnDateDto>> GetByCodeOnDate(DateTime date, CurrencyCode code, CancellationToken token = default)
 	{
-		ValidateCode(code);
-		var currency = await currencyService.GetByCodeOnDateAsync(code, date, token);
+		var currency = await currencyService.GetByCodeOnDateAsync(code.ToString(), date, token);
 
 		return Ok(currency);
 	}
@@ -42,11 +39,5 @@ public sealed class CurrenciesController(ICurrencyService currencyService) : Con
 		var settings = await currencyService.GetSettingsAsync(token);
 
 		return Ok(settings);
-	}
-
-	private static void ValidateCode(ECurrencyCode code)
-	{
-		if (code == ECurrencyCode.UNKNOWN)
-			throw new UnspecifiedCurrencyException();
 	}
 }
