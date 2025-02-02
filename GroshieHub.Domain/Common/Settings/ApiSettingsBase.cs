@@ -1,4 +1,4 @@
-﻿namespace GroshieHub.Domain.Abstractions.Entities;
+﻿namespace GroshieHub.Domain.Common.Settings;
 
 public abstract class ApiSettingsBase
 {

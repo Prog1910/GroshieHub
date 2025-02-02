@@ -1,4 +1,4 @@
-﻿namespace GroshieHub.Domain.Abstractions.Services;
+﻿namespace GroshieHub.Domain.Common.Services;
 
 public abstract class ServiceBase(HttpClient client)
 {
