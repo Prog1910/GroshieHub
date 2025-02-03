@@ -7,6 +7,8 @@ public sealed class CurrencyApiSettings : ApiSettingsBase
 	private string _baseCurrencyCode = string.Empty;
 	private string _defaultCurrencyCode = string.Empty;
 
+	public override string ApiKeyHeader => "apikey";
+
 	public string BaseCurrencyCode
 	{
 		get => _baseCurrencyCode;
