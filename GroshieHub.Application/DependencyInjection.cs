@@ -18,12 +18,13 @@ public static class DependencyInjection
 
 	private static void ConfigureServices(this IServiceCollection services)
 	{
+		services.AddScoped<ICurrencyClient, CurrencyClient>();
 		services.AddScoped<ICurrencyService, CurrencyService>();
 	}
 
 	private static void ConfigureCurrencyHttpClient(this IServiceCollection services)
 	{
-		services.AddHttpClient<ICurrencyService, CurrencyService>("CurrencyClient")
+		services.AddHttpClient<ICurrencyClient, CurrencyClient>("CurrencyClient")
 			.AddPolicyHandler(
 				HttpPolicyExtensions
 					.HandleTransientHttpError()
