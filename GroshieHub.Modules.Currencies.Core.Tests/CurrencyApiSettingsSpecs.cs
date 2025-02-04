@@ -33,8 +33,6 @@ public sealed class CurrencyApiSettingsSpecs
 	{
 		var settings = new CurrencyApiSettings
 		{
-			BaseUrl = "www.example.com",
-			ApiKey = "SECRET_KEY",
 			BaseCurrencyCode = unknownCode,
 			DefaultCurrencyCode = unknownCode
 		};
@@ -52,8 +50,6 @@ public sealed class CurrencyApiSettingsSpecs
 	{
 		var settings = new CurrencyApiSettings
 		{
-			BaseUrl = "www.example.com",
-			ApiKey = "SECRET_KEY",
 			CurrencyRoundCount = -1
 		};
 
