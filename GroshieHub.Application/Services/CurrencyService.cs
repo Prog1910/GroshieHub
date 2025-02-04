@@ -57,5 +57,5 @@ public sealed class CurrencyService : ICurrencyService
 
 	private decimal FormatRate(decimal rate) => rate.RoundToDecimalPlaces(_settings.CurrencyRoundCount);
 
-	private static string FormatDate(DateTime date) => date.FormatDateTime("yyyy-MM-dd");
+	private string FormatDate(DateTime date) => date.FormatDateTime("yyyy-MM-dd");
 }

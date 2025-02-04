@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E8DD7F48
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Domain.Tests", "GroshieHub.Domain.Tests\GroshieHub.Domain.Tests.csproj", "{B0C4F98D-EF48-4A6A-BD6D-0F68BE68CADA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Application.Tests", "GroshieHub.Application.Tests\GroshieHub.Application.Tests.csproj", "{37492229-1A11-4C13-A974-F8CB4F412A5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{B0C4F98D-EF48-4A6A-BD6D-0F68BE68CADA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0C4F98D-EF48-4A6A-BD6D-0F68BE68CADA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0C4F98D-EF48-4A6A-BD6D-0F68BE68CADA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37492229-1A11-4C13-A974-F8CB4F412A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37492229-1A11-4C13-A974-F8CB4F412A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37492229-1A11-4C13-A974-F8CB4F412A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37492229-1A11-4C13-A974-F8CB4F412A5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{493FC23E-236C-413C-8909-47637C8FC17F} = {7F3B4FC8-6882-43AC-9C73-09E2D9374565}
 		{E728BDD7-3481-41D9-976F-0322610DC944} = {7F3B4FC8-6882-43AC-9C73-09E2D9374565}
 		{B0C4F98D-EF48-4A6A-BD6D-0F68BE68CADA} = {E8DD7F48-9A3B-494E-8991-FA81F2B242BB}
+		{37492229-1A11-4C13-A974-F8CB4F412A5C} = {E8DD7F48-9A3B-494E-8991-FA81F2B242BB}
 	EndGlobalSection
 EndGlobal
