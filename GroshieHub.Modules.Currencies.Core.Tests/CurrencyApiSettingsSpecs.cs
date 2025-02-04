@@ -1,3 +1,6 @@
+using GroshieHub.Modules.Currencies.Core.Entities;
+using GroshieHub.Modules.Currencies.Core.Entities.Validators;
+
 namespace GroshieHub.Modules.Currencies.Core.Tests;
 
 public sealed class CurrencyApiSettingsSpecs
