@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GroshieHub.Modules.Currencies\GroshieHub.Modules.Currencies.Core.csproj" />
+    <ProjectReference Include="..\GroshieHub.Modules.Currencies.Core\GroshieHub.Modules.Currencies.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
