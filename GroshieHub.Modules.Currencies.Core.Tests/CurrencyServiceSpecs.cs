@@ -1,6 +1,6 @@
-using GroshieHub.Modules.Currencies.Core.Entities;
-using GroshieHub.Modules.Currencies.Core.Services;
-using GroshieHub.Shared.Enums;
+using GroshieHub.Public.Core.Entities;
+using GroshieHub.Public.Core.Services;
+using GroshieHub.Public.Shared.Enums;
 using Microsoft.Extensions.Options;
 using Moq;
 

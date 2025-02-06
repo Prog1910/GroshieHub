@@ -1,5 +1,5 @@
-using GroshieHub.Modules.Currencies.Core.Entities;
-using GroshieHub.Modules.Currencies.Core.Entities.Validators;
+using GroshieHub.Public.Core.Entities;
+using GroshieHub.Public.Core.Entities.Validators;
 
 namespace GroshieHub.Modules.Currencies.Core.Tests;
 
