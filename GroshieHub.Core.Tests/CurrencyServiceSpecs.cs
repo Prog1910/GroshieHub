@@ -4,7 +4,7 @@ using GroshieHub.Public.Shared.Enums;
 using Microsoft.Extensions.Options;
 using Moq;
 
-namespace GroshieHub.Modules.Currencies.Core.Tests;
+namespace GroshieHub.Core.Tests;
 
 public sealed class CurrencyServiceSpecs
 {

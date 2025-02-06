@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7F3B4FC8-688
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E8DD7F48-9A3B-494E-8991-FA81F2B242BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Modules.Currencies.Core.Tests", "GroshieHub.Modules.Currencies.Core.Tests\GroshieHub.Modules.Currencies.Core.Tests.csproj", "{37492229-1A11-4C13-A974-F8CB4F412A5C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Core.Tests", "GroshieHub.Core.Tests\GroshieHub.Core.Tests.csproj", "{37492229-1A11-4C13-A974-F8CB4F412A5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroshieHub.Public.Core", "GroshieHub.Public.Core\GroshieHub.Public.Core.csproj", "{4B0CD3DD-9D9A-420E-9464-D85E0C58E34E}"
 EndProject
